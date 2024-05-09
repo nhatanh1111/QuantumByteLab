@@ -1,10 +1,19 @@
-function coinChange(coins, amount) {
-  const dp = new Array(amount + 1).fill(amount + 1);
-  dp[0] = 0;
-  for (const coin of coins) {
-    for (let i = coin; i <= amount; i++) {
-      dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+const quickSortRandomPivot = (arr) => {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const pivotIndex = Math.floor(Math.random() * arr.length);
+  const pivot = arr[pivotIndex];
+  const left = [];
+  const right = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (i !== pivotIndex) {
+      if (arr[i] <= pivot) {
+        left.push(arr[i]);
+      } else {
+        right.push(arr[i]);
+      }
     }
   }
-  return dp[amount] > amount ? -1 : dp[amount];
-}
+  return quickSortRandomPivot(left).concat(pivot, quickSortRandomPivot(right));
+};
