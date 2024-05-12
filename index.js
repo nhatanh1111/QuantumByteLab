@@ -1,11 +1,10 @@
-function mergeTwoLists(l1, l2) {
-  if (!l1) return l2;
-  if (!l2) return l1;
-  if (l1.val < l2.val) {
-    l1.next = mergeTwoLists(l1.next, l2);
-    return l1;
-  } else {
-    l2.next = mergeTwoLists(l1, l2.next);
-    return l2;
+function rob(nums) {
+  let prevMax = 0;
+  let currMax = 0;
+  for (const num of nums) {
+    const temp = currMax;
+    currMax = Math.max(prevMax + num, currMax);
+    prevMax = temp;
   }
+  return currMax;
 }
