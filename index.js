@@ -1,6 +1,2 @@
-function add(x, y) {
-  return x + y;
-}
-
-const result = add(5, 3);
-console.log(result); // 8
+const nthElement = (arr, n = 0) =>
+  (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
